@@ -4,10 +4,15 @@ import { formatCurrency } from "./utils/money.js";
 
 let cartSummaryHTML = ''
 
-let cartQuantity = calculateCartQuantity();
 
-document.querySelector('.js-item-number')
-  .innerHTML = `${cartQuantity} item(s)`
+function showCartQuantity() {
+  let cartQuantity = calculateCartQuantity();
+  let item = (cartQuantity > 1) ? 'items' : 'item';
+  document.querySelector('.js-item-number')
+    .innerHTML = `${cartQuantity} ${item}`
+}
+
+showCartQuantity();
 
 cart.forEach((cartItem) => {
   const {productId} = cartItem;
@@ -113,6 +118,8 @@ document.querySelectorAll('.js-delete-link')
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
 
       container.remove();
+
+      showCartQuantity();
       
     })
  })
