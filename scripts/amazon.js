@@ -4,6 +4,12 @@ import { formatCurrency } from './utils/money.js';
 
 let productsHTML = '';
 
+let jsCartQuantity = document.querySelector('.js-cart-quantity');
+let cartQuantity = calculateCartQuantity();
+
+jsCartQuantity.innerHTML = cartQuantity;
+
+
 products.forEach((product) => {
     productsHTML += `
          <div class="product-container">
@@ -65,14 +71,13 @@ let setTime;
 
 
 function updateCartQuantity(message) {
-  let cartQuantity = calculateCartQuantity();
+  cartQuantity = calculateCartQuantity();
 
-    document.querySelector('.js-cart-quantity')
-    .innerHTML = cartQuantity;
+  jsCartQuantity.innerHTML = cartQuantity;
 
-    setTime = setTimeout(()=>{
-      message.classList.remove('visible');
-    }, 2000)
+  setTime = setTimeout(()=>{
+    message.classList.remove('visible');
+  }, 2000)
 }
 
 document.querySelectorAll('.js-add-to-cart')
