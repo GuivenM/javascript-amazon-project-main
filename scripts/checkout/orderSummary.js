@@ -133,6 +133,7 @@ export function renderOrderSummary() {
         container.remove();
 
         showCartQuantity();
+        renderPaymentSummary();
         
       })
     });
