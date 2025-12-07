@@ -179,7 +179,8 @@ export function renderOrderSummary() {
     }
 
     updateCartQuantity(productId, quantity);
-    showCartQuantity();
+    renderOrderSummary();
+    renderPaymentSummary();
     
     document.querySelector(`.js-quantity-label-${productId}`)
       .innerHTML = quantity;
